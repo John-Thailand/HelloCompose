@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">HelloCompose</string>
+    <string name="i_like_compose">I Like Compose</string>
+</resources>
