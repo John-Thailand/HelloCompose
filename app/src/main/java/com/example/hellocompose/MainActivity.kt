@@ -26,6 +26,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -42,6 +44,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.hellocompose.ui.theme.HelloComposeTheme
 
@@ -470,4 +473,47 @@ fun AnimalCard(
         Text(text = animal.text)
     }
 }
+
+@Composable
+fun OnOffSwitch(on: Boolean) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = "Off",
+            style = MaterialTheme.typography.titleLarge
+        )
+        Switch(
+            checked = on,
+            onCheckedChange = {},
+            modifier = Modifier.padding(horizontal = 4.dp)
+        )
+        Text(
+            text = "On",
+            style = MaterialTheme.typography.titleLarge
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun OnOffSwitchPreview() {
+    OnOffSwitch(on = true)
+}
+
+// テーマのコンポーザブル関数でラップし、Surfaceでラップすると、アプリのテーマが適用される
+@Preview
+@Composable
+fun OnOffSwitchPreviewWithTheme() {
+    HelloComposeTheme {
+        Surface {
+            OnOffSwitch(on = true)
+        }
+    }
+}
+
+
+
+
+
+
+
 
