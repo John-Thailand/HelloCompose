@@ -551,3 +551,27 @@ val lambda12: (Int, Int) -> Int = { x, y ->
 }
 
 fun process(input: Int = 0, innerProcess: (value: Int) -> Unit) {}
+
+// 拡張関数の定義方法
+fun String.printLengthIfNotBlank() {
+    if (isNotBlank()) {
+        println(this.length)
+    }
+}
+
+val hello = "Hello"
+hello.printLengthIfNotBlank()
+
+// クラス内拡張関数
+class PrintLengthScope() {
+    fun String.printLength() {
+        println(length)
+    }
+
+    fun checkLength(text: String) {
+        text.printLength()
+    }
+}
+
+val scope = PrintLengthScope()
+scope.checkLength("Hello")
