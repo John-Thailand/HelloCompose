@@ -27,6 +27,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
@@ -59,34 +60,16 @@ class MainActivity : ComponentActivity() {
             HelloComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
-                        AlertDialog(
-                            onDismissRequest = {},
-                            confirmButton = {
-                                TextButton(
-                                    onClick = {}
-                                ) {
-                                    Text("OK")
-                                }
-                            },
-                            dismissButton = {
-                                TextButton(
-                                    onClick = {}
-                                ) {
-                                    Text("Cancel")
-                                }
-                            },
-                            icon = {
+                        OutlinedTextField(
+                            value = "Customized TextField",
+                            onValueChange = {},
+                            label = { Text("TextField") },
+                            leadingIcon = {
                                 Icon(
-                                    painter = painterResource(R.drawable.info),
+                                    painter = painterResource(R.drawable.build),
                                     contentDescription = null
                                 )
-                            },
-                            title = { Text("Sample Dialog") },
-                            text = { Text("This is a compose sample dialog.") },
-                            containerColor = Color.White,
-                            iconContentColor = Color.LightGray,
-                            titleContentColor = Color.Black,
-                            textContentColor = Color.Gray
+                            }
                         )
                     }
                 }
@@ -536,8 +519,35 @@ fun OnOffSwitchPreviewWithTheme() {
     }
 }
 
+val lambda1: () -> Unit = { println("Lambda") }
+val lambda2 = { println("Lambda") }
 
+val lambdaX = lambda1
+// lambdaX()
 
+val labmda3 = { name: String -> println("My name is $name") }
+val lambda4: (String) -> Unit = { name -> println("My name is $name") }
+val lambda5: (String) -> Unit = { println("My name is $it") }
 
+val lambda6 = { name: String, age: Int ->
+    println("$name is $age years old")
+}
+val lambda7: (String, Int) -> Unit = { name, age ->
+    println("$name is $age years old")
+}
 
+val lambda8: (String) -> Unit = { println("args is not used") }
+val lambda9: (String, Int) -> Unit = { _, _ ->
+    println("args is not used")
+}
+val lambda10: (String, Int) -> Unit = { name, _ ->
+    println("arg1 is $name")
+}
 
+val lambda11: (Int, Int) -> Int = { x, y -> x + y }
+val lambda12: (Int, Int) -> Int = { x, y ->
+    val sum = x + y
+    sum / 2
+}
+
+fun process(input: Int = 0, innerProcess: (value: Int) -> Unit) {}
