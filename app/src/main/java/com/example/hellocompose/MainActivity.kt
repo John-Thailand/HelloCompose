@@ -24,11 +24,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -56,12 +59,35 @@ class MainActivity : ComponentActivity() {
             HelloComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
-                        val animals = listOf(
-                            Animal(R.drawable.dog, "Dog"),
-                            Animal(R.drawable.cat, "Cat"),
-                            Animal(R.drawable.bird, "Bird")
+                        AlertDialog(
+                            onDismissRequest = {},
+                            confirmButton = {
+                                TextButton(
+                                    onClick = {}
+                                ) {
+                                    Text("OK")
+                                }
+                            },
+                            dismissButton = {
+                                TextButton(
+                                    onClick = {}
+                                ) {
+                                    Text("Cancel")
+                                }
+                            },
+                            icon = {
+                                Icon(
+                                    painter = painterResource(R.drawable.info),
+                                    contentDescription = null
+                                )
+                            },
+                            title = { Text("Sample Dialog") },
+                            text = { Text("This is a compose sample dialog.") },
+                            containerColor = Color.White,
+                            iconContentColor = Color.LightGray,
+                            titleContentColor = Color.Black,
+                            textContentColor = Color.Gray
                         )
-                        AnimalSection(animals = animals)
                     }
                 }
             }
@@ -509,8 +535,6 @@ fun OnOffSwitchPreviewWithTheme() {
         }
     }
 }
-
-
 
 
 
